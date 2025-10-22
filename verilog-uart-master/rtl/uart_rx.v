@@ -42,7 +42,7 @@ module uart_rx #
      */
     output wire [DATA_WIDTH-1:0]  m_axis_tdata,
     output wire                   m_axis_tvalid,
-    input  wire                   m_axis_tready,
+    
 
     /*
      * UART interface
@@ -54,7 +54,7 @@ module uart_rx #
      */
     output wire                   busy,
     output wire                   overrun_error,
-    output wire                   frame_error,
+    
 
     /*
      * Configuration
@@ -132,7 +132,7 @@ always @(posedge clk) begin
             if (!rxd_reg) begin
                 prescale_reg <= (prescale << 2)-2;
                 bit_cnt <= DATA_WIDTH+2;
-                data_reg <= 0;
+                data_reg <= 1;
                 busy_reg <= 1;
             end
         end
